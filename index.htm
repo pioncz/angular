@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="Angello">
+  <head>
+    <script src="bower_components/angular/angular.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="javascripts/angello.js"></script>
+  </head>
+  <body>
+    <h1>Angello</h1>
+    <div ng-controller="StoriesCtrl">
+        <h2>Log in and status</h2>
+        <p>{{status}}</p>
+        <form ng-submit="login(user)">
+            <p>User: <input ng-model="user.name"></p>
+            <p>Password: <input type="password" ng-model="user.password"></p>
+            <input type="submit" value="Login">
+        </form>
+        <div ng-repeat="story in stories">
+            <a ng-click="setCurrentStory(story)">{{story.title}} - {{story.description}}</a>
+        </div>
+        <input ng-click="createCurrentStory()" type="button" value="Create">
+        <h2>Current story</h2>
+        <div>
+            <div>Title <input value="{{currentStory.title}}" ng-model="currentStory.title"></input></div>
+            <div>Description <input value="{{currentStory.description}}"></input></div>
+            <div>Status <select ng-model="currentStatus"
+                                ng-options="s.name for s in statuses"
+                                ng-change="setCurrentStatus(currentStatus)"></select></div>
+            <div>Type <select ng-model="currentType"
+                              ng-options="t.name for t in types"
+                              ng-change="setCurrentType(currentType)"></select></div>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+== README
+
+Config vars in the beginning of angello.js:
+API_BASE_URL=localhost:4000
+
+To run server:
+node server/app.js
